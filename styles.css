@@ -59,8 +59,8 @@ body.dark-theme .card {
 .heart {
     position: absolute;
     list-style: none;
-    width: 20px;
-    height: 20px;
+    width: 40px; /* Increased size */
+    height: 40px; /* Increased size */
     background: rgba(255, 105, 180, 0.5);
     transform: translateY(100vh) rotate(45deg);
     animation: floatHearts 15s linear infinite;
@@ -69,20 +69,20 @@ body.dark-theme .card {
 .heart:before, .heart:after {
     content: '';
     position: absolute;
-    width: 20px;
-    height: 20px;
+    width: 40px; /* Increased size */
+    height: 40px; /* Increased size */
     border-radius: 50%;
     background: rgba(255, 105, 180, 0.5);
 }
 
 .heart:before {
-    top: -10px;
+    top: -20px; /* Adjusted for new size */
     left: 0;
 }
 
 .heart:after {
     top: 0;
-    left: -10px;
+    left: -20px; /* Adjusted for new size */
 }
 
 @keyframes floatHearts {
@@ -210,8 +210,8 @@ body.dark-theme .card {
 .balloon {
     position: absolute;
     bottom: -150px;
-    width: 50px;
-    height: 60px;
+    width: 80px; /* Increased size */
+    height: 100px; /* Increased size */
     background: linear-gradient(to top, var(--pink-btn), #ff85a1); /* Gradient for vibrancy */
     border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
     animation: floatUp 10s linear infinite;
@@ -220,11 +220,11 @@ body.dark-theme .card {
 .balloon::after {
     content: '';
     position: absolute;
-    bottom: -10px;
+    bottom: -20px; /* Adjusted for new size */
     left: 50%;
     transform: translateX(-50%);
     width: 2px;
-    height: 20px;
+    height: 40px; /* Adjusted for new size */
     background-color: #555;
 }
 
@@ -405,8 +405,8 @@ body.dark-theme .star {
 
 .page-image {
   position: absolute;
-  width: 60vw; /* Increased responsive width */
-  height: 60vw; /* Increased responsive height */
+  width: 40vw; /* Increased responsive width */
+  height: 40vw; /* Increased responsive height */
   max-width: 500px; /* Max size for larger screens */
   max-height: 500px; /* Max size for larger screens */
   object-fit: cover;

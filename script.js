@@ -7,26 +7,34 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Persistent music playback logic
     if (birthdaySong) {
-        const musicState = localStorage.getItem('musicState'); // Use a single key for state
-        if (musicState) {
+        const musicState = localStorage.getItem('musicState');
+        const lastPlayedTime = localStorage.getItem('lastPlayedTime');
+        const fiveMinutes = 5 * 60 * 1000; // 5 minutes in milliseconds
+
+        if (musicState && lastPlayedTime && (Date.now() - parseInt(lastPlayedTime) < fiveMinutes)) {
             const { playing, currentTime } = JSON.parse(musicState);
             if (playing) {
                 birthdaySong.currentTime = currentTime;
-                birthdaySong.play().catch(e => console.log("Autoplay prevented: ", e)); // Catch potential autoplay errors
+                birthdaySong.play().catch(e => console.log("Autoplay prevented: ", e));
             }
+        } else {
+            // Reset localStorage if more than 5 minutes have passed
+            localStorage.removeItem('musicState');
+            localStorage.removeItem('lastPlayedTime');
         }
 
-        // Update localStorage on play/pause/timeupdate
         birthdaySong.addEventListener('play', () => {
             localStorage.setItem('musicState', JSON.stringify({ playing: true, currentTime: birthdaySong.currentTime }));
+            localStorage.setItem('lastPlayedTime', Date.now().toString());
         });
         birthdaySong.addEventListener('pause', () => {
             localStorage.setItem('musicState', JSON.stringify({ playing: false, currentTime: birthdaySong.currentTime }));
+            localStorage.setItem('lastPlayedTime', Date.now().toString());
         });
         birthdaySong.addEventListener('timeupdate', () => {
-            // Only update if playing to avoid unnecessary writes
             if (!birthdaySong.paused) {
                 localStorage.setItem('musicState', JSON.stringify({ playing: true, currentTime: birthdaySong.currentTime }));
+                localStorage.setItem('lastPlayedTime', Date.now().toString());
             }
         });
     }
@@ -57,7 +65,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
         lightsOnBtn.addEventListener('click', () => {
             document.body.classList.remove('dark-theme'); // Switch to light theme
-            // starsContainer.classList.remove('hidden'); // REMOVED: CSS handles visibility
             lightsOnBtn.style.display = 'none';
             setTimeout(() => {
                 window.location.href = 'page4.html';
@@ -73,6 +80,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (birthdaySong) {
                 birthdaySong.play();
                 localStorage.setItem('musicState', JSON.stringify({ playing: true, currentTime: birthdaySong.currentTime }));
+                localStorage.setItem('lastPlayedTime', Date.now().toString());
             }
             playMusicBtn.style.display = 'none';
             visualizerContainer.classList.remove('hidden');
@@ -95,7 +103,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         setTimeout(() => {
             window.location.href = 'page7.html';
-        }, 3000); // Show blast for 3 seconds
+        }, 15000); // Show blast for 15 seconds
     }
 
     // Logic for Fly the Balloons page (page7.html)
@@ -106,7 +114,7 @@ document.addEventListener('DOMContentLoaded', () => {
             createBalloons(30, 'continuous'); // Create continuous balloons
             setTimeout(() => {
                 window.location.href = e.target.href;
-            }, 1000); // Short delay before navigating
+            }, 10000); // Short delay before navigating
         });
     }
 

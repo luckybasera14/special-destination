@@ -6,15 +6,16 @@
   <title>A Surprise For You!</title>
   <link rel="stylesheet" href="styles.css">
 </head>
-<body>
+<body class="dark-theme">
+  <audio id="birthday-song" src="birthday-song.mp3" loop></audio>
   <div class="container">
-    <div class="card">
-      <p class="icon">✨</p>
-      <p class="text">It's Your Special Day Yeyey!</p>
-    </div>
-    <div class="button-container">
-        <a href="page2.html" class="button red-pink-btn">Next</a>
-    </div>
+    <button id="start-btn" class="button red-pink-btn">Click Me</button>
   </div>
+
+  <div id="birthday-blast" class="hidden">
+    <h1 class="happy-birthday-text">Happy Birthday!</h1>
+  </div>
+
+  <script src="script.js"></script>
 </body>
 </html>

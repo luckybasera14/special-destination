@@ -1,4 +1,3 @@
-
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
 
 :root {
@@ -10,12 +9,22 @@
   --blue-btn: #1e90ff;
   --red-pink-btn: #ff6f61;
   --shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+
+  /* Dark Theme Variables */
+  --dark-bg: #1a1a2e;
+  --dark-card-bg: #2e2e4a;
+  --dark-text: #e0e0e0;
 }
 
-body, html {
+html {
+  height: 100%;
+}
+
+body {
   margin: 0;
   padding: 0;
-  height: 100%;
+  min-height: 100vh; /* Ensure body takes full viewport height */
+  width: 100%;
   font-family: 'Poppins', sans-serif;
   display: flex;
   justify-content: center;
@@ -23,6 +32,68 @@ body, html {
   text-align: center;
   background-color: var(--bg-light-pink);
   overflow: hidden;
+  color: var(--text-dark);
+  transition: background-color 0.5s ease, color 0.5s ease;
+}
+
+body.dark-theme {
+  background-color: var(--dark-bg);
+  color: var(--dark-text);
+}
+
+body.dark-theme .card {
+  background-color: var(--dark-card-bg);
+  color: var(--dark-text);
+}
+
+.hearts-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: -1;
+}
+
+.heart {
+    position: absolute;
+    list-style: none;
+    width: 20px;
+    height: 20px;
+    background: rgba(255, 105, 180, 0.5);
+    transform: translateY(100vh) rotate(45deg);
+    animation: floatHearts 15s linear infinite;
+}
+
+.heart:before, .heart:after {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: rgba(255, 105, 180, 0.5);
+}
+
+.heart:before {
+    top: -10px;
+    left: 0;
+}
+
+.heart:after {
+    top: 0;
+    left: -10px;
+}
+
+@keyframes floatHearts {
+    0% {
+        transform: translateY(100vh) rotate(45deg);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-10vh) rotate(65deg);
+        opacity: 0;
+    }
 }
 
 .container {
@@ -46,6 +117,12 @@ body, html {
   font-size: 1.5rem;
   color: var(--text-dark);
   margin-top: 0.5rem;
+}
+
+.golden-text {
+  font-size: 1.8em; /* Larger than parent text */
+  color: gold; /* Golden color */
+  text-shadow: 0 0 5px rgba(255,215,0,0.5); /* Subtle glow */
 }
 
 .button-container {
@@ -90,15 +167,21 @@ body, html {
     width: 100%;
     text-align: center;
     margin-bottom: 2rem;
+    animation: swingBunting 2s ease-in-out infinite alternate;
 }
 
 .bunting img {
     max-width: 80%;
 }
 
-.cake-img {
-    max-width: 200px;
-    margin-top: 2rem;
+@keyframes swingBunting {
+  from { transform: rotate(-2deg); }
+  to { transform: rotate(2deg); }
+}
+
+.bunting-blast {
+  max-width: 90%; /* Adjust size for blast */
+  animation: zoomIn 1s ease forwards, flicker 1.5s infinite alternate; /* Reuse existing animations */
 }
 
 .balloon-container {
@@ -116,7 +199,7 @@ body, html {
     bottom: -150px;
     width: 50px;
     height: 60px;
-    background-color: var(--pink-btn);
+    background: linear-gradient(to top, var(--pink-btn), #ff85a1); /* Gradient for vibrancy */
     border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
     animation: floatUp 10s linear infinite;
 }
@@ -142,4 +225,183 @@ body, html {
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(20px); }
   to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes zoomIn {
+  from { opacity: 0; transform: scale(0.5); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes flicker {
+  from { text-shadow: 0 0 20px #ff6f61, 0 0 40px #ff6f61, 0 0 60px #ff6f61; }
+  to { text-shadow: 0 0 10px #ff6f61, 0 0 20px #ff6f61, 0 0 30px #ff6f61; }
+}
+
+@keyframes blastFloat {
+    0% {
+        transform: translateY(0) scale(0.5);
+        opacity: 0;
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-100vh) scale(1.2);
+        opacity: 0;
+    }
+}
+
+@keyframes blastExplode {
+    0% {
+        transform: scale(0.5) rotate(0deg);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(2) rotate(720deg);
+        opacity: 0;
+    }
+}
+
+.heart-cake {
+    position: relative;
+    width: 180px; /* Slightly larger */
+    height: 162px; /* Maintain aspect ratio */
+    background-color: #ffc0cb; /* Light pink for cake */
+    transform: rotate(-45deg);
+    margin: 50px auto;
+    border-radius: 10px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.3); /* More prominent shadow */
+}
+
+.heart-cake::before,
+.heart-cake::after {
+    content: '';
+    position: absolute;
+    width: 180px;
+    height: 162px;
+    background-color: #ffc0cb;
+    border-radius: 50%;
+}
+
+.heart-cake::before {
+    top: -90px; /* Adjust for new size */
+    left: 0;
+}
+
+.heart-cake::after {
+    top: 0;
+    left: 90px; /* Adjust for new size */
+}
+
+.heart-cake::before,
+.heart-cake::after {
+    background-color: #ffc0cb; /* Match cake color */
+}
+
+/* New CSS for Lights On and Play Music pages */
+.stars-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: -1;
+}
+
+.star {
+  position: absolute;
+  background-color: white;
+  border-radius: 50%;
+  opacity: 0;
+  animation: twinkle 2s infinite alternate;
+}
+
+body.dark-theme .star {
+  opacity: 0.1; /* Very subtle in dark theme */
+}
+
+@keyframes twinkle {
+  0% { opacity: 0; transform: scale(0.5); }
+  50% { opacity: 1; transform: scale(1); }
+  100% { opacity: 0; transform: scale(0.5); }
+}
+
+.visualizer-container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  height: 100px;
+  gap: 5px;
+  margin-top: 2rem;
+}
+
+.bar {
+  width: 10px;
+  background-color: #ff6f61;
+  animation: visualize 0.5s infinite alternate;
+}
+
+@keyframes visualize {
+  0% { height: 10px; }
+  25% { height: 60px; }
+  50% { height: 30px; }
+  75% { height: 90px; }
+  100% { height: 20px; }
+}
+
+.animated-text {
+  animation: pulse 1.5s infinite alternate;
+}
+
+@keyframes pulse {
+  from { transform: scale(1); }
+  to { transform: scale(1.05); }
+}
+
+.confetti-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 1000;
+}
+
+.confetti-piece {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background-color: #ff0a54;
+  opacity: 0.7;
+  border-radius: 50%;
+  animation: fall 5s linear infinite;
+}
+
+@keyframes fall {
+  from {
+    transform: translateY(0) rotate(0deg);
+  }
+  to {
+    transform: translateY(100vh) rotate(720deg);
+  }
+}
+
+.photo-gallery {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.photo-gallery img {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }

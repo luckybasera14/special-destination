@@ -3,19 +3,43 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>A Question...</title>
+  <title>Lights On</title>
   <link rel="stylesheet" href="styles.css">
 </head>
-<body>
+<body class="dark-theme">
+  <audio id="birthday-song" src="birthday-song.mp3" loop></audio>
   <div class="container">
-    <div class="card">
-      <p class="icon">✨</p>
-      <p class="text">Do you wanna see what I made??</p>
-      <div class="button-container">
-        <a href="page4.html" class="button pink-btn">Yes!</a>
-        <a href="#" class="button purple-btn">No</a>
-      </div>
-    </div>
+    <button id="lights-on-btn" class="button blue-btn">Lights On</button>
+    <div class="stars-container"></div>
   </div>
+  <script src="script.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const lightsOnBtn = document.getElementById('lights-on-btn');
+        const starsContainer = document.querySelector('.stars-container');
+
+        if (lightsOnBtn) {
+            lightsOnBtn.addEventListener('click', () => {
+                document.body.classList.remove('dark-bg');
+                starsContainer.classList.remove('hidden');
+                lightsOnBtn.style.display = 'none';
+                setTimeout(() => {
+                    window.location.href = 'page4.html';
+                }, 1500); // Short delay for effect
+            });
+        }
+
+        // Create stars
+        for (let i = 0; i < 100; i++) {
+            const star = document.createElement('div');
+            star.classList.add('star');
+            star.style.left = Math.random() * 100 + 'vw';
+            star.style.top = Math.random() * 100 + 'vh';
+            star.style.animationDuration = (Math.random() * 3 + 2) + 's';
+            star.style.animationDelay = Math.random() * 2 + 's';
+            starsContainer.appendChild(star);
+        }
+    });
+  </script>
 </body>
 </html>

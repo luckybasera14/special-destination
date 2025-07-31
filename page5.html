@@ -3,22 +3,21 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Play Music</title>
+  <title>A Question...</title>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <audio id="birthday-song" src="https://www.chosic.com/wp-content/uploads/2021/07/The-Best-Birthday-Song.mp3" loop></audio>
+  <audio id="birthday-song" src="birthday-song.mp3" loop autoplay></audio>
   <div class="container">
-    <a href="page6.html" id="play-music-btn" class="button red-pink-btn">Play Music</a>
+    <div class="card">
+      <p class="icon">✨</p>
+      <p class="text animated-text">Do you wanna see what I made??</p>
+      <div class="button-container">
+        <a href="page6.html" class="button pink-btn">Yes!</a>
+        <a href="#" class="button purple-btn">No</a>
+      </div>
+    </div>
   </div>
-  <script>
-    document.getElementById('play-music-btn').addEventListener('click', (e) => {
-      e.preventDefault();
-      document.getElementById('birthday-song').play();
-      setTimeout(() => {
-        window.location.href = e.target.href;
-      }, 500);
-    });
-  </script>
+  <script src="script.js"></script>
 </body>
 </html>

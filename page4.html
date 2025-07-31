@@ -3,20 +3,53 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Lights On</title>
+  <title>Play Music</title>
   <link rel="stylesheet" href="styles.css">
 </head>
-<body class="dark-bg">
+<body>
+  <audio id="birthday-song" src="birthday-song.mp3" loop></audio>
   <div class="container">
-    <a href="page5.html" id="lights-on-btn" class="button blue-btn">Lights On</a>
+    <button id="play-music-btn" class="button red-pink-btn">Play Music</button>
+    <div class="visualizer-container hidden">
+      <div class="bar"></div>
+      <div class="bar"></div>
+      <div class="bar"></div>
+      <div class="bar"></div>
+      <div class="bar"></div>
+      <div class="bar"></div>
+      <div class="bar"></div>
+      <div class="bar"></div>
+      <div class="bar"></div>
+      <div class="bar"></div>
+      <div class="bar"></div>
+      <div class="bar"></div>
+      <div class="bar"></div>
+      <div class="bar"></div>
+      <div class="bar"></div>
+      <div class="bar"></div>
+      <div class="bar"></div>
+      <div class="bar"></div>
+      <div class="bar"></div>
+      <div class="bar"></div>
+    </div>
   </div>
+  <script src="script.js"></script>
   <script>
-    document.getElementById('lights-on-btn').addEventListener('click', (e) => {
-      e.preventDefault();
-      document.body.classList.remove('dark-bg');
-      setTimeout(() => {
-        window.location.href = e.target.href;
-      }, 500);
+    document.addEventListener('DOMContentLoaded', () => {
+        const playMusicBtn = document.getElementById('play-music-btn');
+        const birthdaySong = document.getElementById('birthday-song');
+        const visualizerContainer = document.querySelector('.visualizer-container');
+
+        if (playMusicBtn) {
+            playMusicBtn.addEventListener('click', () => {
+                birthdaySong.play();
+                playMusicBtn.style.display = 'none';
+                visualizerContainer.classList.remove('hidden');
+                setTimeout(() => {
+                    window.location.href = 'page5.html';
+                }, 2000); // Short delay for effect
+            });
+        }
     });
   </script>
 </body>

@@ -3,27 +3,17 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>A Message For You</title>
+  <title>Cut The Cake</title>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="balloon-container"></div>
+  <audio id="birthday-song" src="birthday-song.mp3" loop autoplay></audio>
   <div class="container">
     <div class="bunting">
-        <img src="https://i.imgur.com/tVw4E2A.png" alt="Happy Birthday Bunting">
+        <img src="bunting.png" alt="Happy Birthday Bunting">
     </div>
-    <a href="#" class="button pink-btn">Well, I Have a Message for You Madam Ji</a>
-    <img src="https://i.imgur.com/vJb0s2j.png" alt="Dog Shaped Cake" class="cake-img">
+    <a href="page9.html" class="button pink-btn">Let's Cut the Cake Madam Ji</a>
   </div>
-  <script>
-    const balloonContainer = document.querySelector('.balloon-container');
-    for (let i = 0; i < 15; i++) {
-        const balloon = document.createElement('div');
-        balloon.classList.add('balloon');
-        balloon.style.left = Math.random() * 100 + 'vw';
-        balloon.style.animationDuration = (Math.random() * 5 + 5) + 's';
-        balloonContainer.appendChild(balloon);
-    }
-  </script>
+  <script src="script.js"></script>
 </body>
 </html>

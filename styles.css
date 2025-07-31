@@ -31,7 +31,8 @@ body {
   align-items: center;
   text-align: center;
   background-color: var(--bg-light-pink);
-  overflow: hidden;
+  overflow-x: hidden; /* Prevent horizontal scrolling */
+  overflow-y: auto; /* Allow vertical scrolling */
   color: var(--text-dark);
   transition: background-color 0.5s ease, color 0.5s ease;
 }
@@ -98,7 +99,7 @@ body.dark-theme .card {
 
 .container {
   padding: 1rem; /* Adjusted padding for smaller screens */
-  max-width: 80%; /* Allow container to take more width */
+  max-width: 95%; /* Allow container to take more width */
   margin: 0 auto; /* Center container */
 }
 
@@ -322,7 +323,6 @@ body.dark-theme .card {
   width: 100%;
   height: 100%;
   pointer-events: none;
-  overflow: hidden;
   z-index: -1;
 }
 
@@ -383,7 +383,6 @@ body.dark-theme .star {
   width: 100%;
   height: 100%;
   pointer-events: none;
-  overflow: hidden;
   z-index: 1000;
 }
 

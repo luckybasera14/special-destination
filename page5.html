@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Play Music</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <audio id="birthday-song" src="https://www.chosic.com/wp-content/uploads/2021/07/The-Best-Birthday-Song.mp3" loop></audio>
+  <div class="container">
+    <a href="page6.html" id="play-music-btn" class="button red-pink-btn">Play Music</a>
+  </div>
+  <script>
+    document.getElementById('play-music-btn').addEventListener('click', (e) => {
+      e.preventDefault();
+      document.getElementById('birthday-song').play();
+      setTimeout(() => {
+        window.location.href = e.target.href;
+      }, 500);
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lights On</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="dark-bg">
+  <div class="container">
+    <a href="page5.html" id="lights-on-btn" class="button blue-btn">Lights On</a>
+  </div>
+  <script>
+    document.getElementById('lights-on-btn').addEventListener('click', (e) => {
+      e.preventDefault();
+      document.body.classList.remove('dark-bg');
+      setTimeout(() => {
+        window.location.href = e.target.href;
+      }, 500);
+    });
+  </script>
+</body>
+</html>

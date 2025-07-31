@@ -1,0 +1,145 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+
+:root {
+  --bg-light-pink: #fff0f5;
+  --card-bg: #ffffff;
+  --text-dark: #333;
+  --pink-btn: #ff69b4;
+  --purple-btn: #9370db;
+  --blue-btn: #1e90ff;
+  --red-pink-btn: #ff6f61;
+  --shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+body, html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-family: 'Poppins', sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background-color: var(--bg-light-pink);
+  overflow: hidden;
+}
+
+.container {
+  padding: 2rem;
+}
+
+.card {
+  background-color: var(--card-bg);
+  padding: 3rem 2rem;
+  border-radius: 20px;
+  box-shadow: var(--shadow);
+  max-width: 400px;
+  animation: fadeIn 1s ease-in-out;
+}
+
+.icon {
+  font-size: 2rem;
+}
+
+.text {
+  font-size: 1.5rem;
+  color: var(--text-dark);
+  margin-top: 0.5rem;
+}
+
+.button-container {
+  margin-top: 2rem;
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.button {
+  border: none;
+  padding: 1rem 2rem;
+  border-radius: 50px;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: white;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  text-decoration: none;
+  box-shadow: var(--shadow);
+}
+
+.button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+.pink-btn { background-color: var(--pink-btn); }
+.purple-btn { background-color: var(--purple-btn); }
+.blue-btn { background-color: var(--blue-btn); }
+.red-pink-btn { background-color: var(--red-pink-btn); }
+
+.dark-bg {
+  background-color: #000;
+}
+
+.hidden {
+  display: none;
+}
+
+.bunting {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.bunting img {
+    max-width: 80%;
+}
+
+.cake-img {
+    max-width: 200px;
+    margin-top: 2rem;
+}
+
+.balloon-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 10;
+}
+
+.balloon {
+    position: absolute;
+    bottom: -150px;
+    width: 50px;
+    height: 60px;
+    background-color: var(--pink-btn);
+    border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+    animation: floatUp 10s linear infinite;
+}
+
+.balloon::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 2px;
+    height: 20px;
+    background-color: #555;
+}
+
+
+@keyframes floatUp {
+    to {
+        transform: translateY(-100vh);
+    }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}

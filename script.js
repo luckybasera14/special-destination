@@ -113,6 +113,16 @@ document.addEventListener('DOMContentLoaded', () => {
     // Logic for final page (page9.html) - continuous balloons
     if (window.location.pathname.includes('page9.html')) {
         createBalloons(30, 'continuous');
+
+        // Digital Photo Album interaction
+        document.querySelectorAll('.album-item').forEach(item => {
+            item.addEventListener('click', () => {
+                const message = item.querySelector('.album-message');
+                if (message) {
+                    message.classList.toggle('hidden');
+                }
+            });
+        });
     }
 });
 
